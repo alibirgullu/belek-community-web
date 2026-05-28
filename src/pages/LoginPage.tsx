@@ -20,6 +20,9 @@ export default function LoginPage() {
 
             if (response.data.token) {
                 localStorage.setItem('sksAdminToken', response.data.token);
+                if (response.data.refreshToken) {
+                    localStorage.setItem('sksAdminRefreshToken', response.data.refreshToken);
+                }
                 localStorage.setItem('sksAdminUser', JSON.stringify({
                     id: response.data.userId,
                     fullName: response.data.fullName,

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Send, AlertCircle, Loader2, Clock, CheckCircle } from 'lucide-react';
 import api from '../api';
+import { toast } from 'sonner';
 
 interface Community {
     id: number;
@@ -62,12 +63,12 @@ export default function AnnouncementsAdminPage() {
         e.preventDefault();
         
         if (targetType === 'community' && !targetCommunityId) {
-            alert('Lütfen bir topluluk seçin.');
+            toast.error('Lütfen bir topluluk seçin.');
             return;
         }
 
         if (targetType === 'users' && targetUserIds.length === 0) {
-            alert('Lütfen en az bir öğrenci seçin.');
+            toast.error('Lütfen en az bir öğrenci seçin.');
             return;
         }
 
